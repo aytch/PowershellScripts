@@ -61,5 +61,5 @@ switch ( $continue ) {
 		}
 	DEFAULT {exit}
 	}
-Write-Host -ForegroundColor Green -BackgroundColor Black "AWWWWWW YEAHHHHHH"
+Write-Host -ForegroundColor Green -BackgroundColor Black "Ticket" $IncidentID " operation finished."
 	
