@@ -1,4 +1,4 @@
-Shoes.app :title => "Firing Range", :width => 300, :height => 300 do #these are criteria for the window
+Shoes.app(:title => "Firing Range", :width => 300, :height => 300 ) do #these are criteria for the window
 	stack do # vertical stack
 
 		flow do #horizontal flow of elements
@@ -13,15 +13,13 @@ Shoes.app :title => "Firing Range", :width => 300, :height => 300 do #these are 
 			edit_box :height => 30 do |e|
 				@counter2.text = e.text()
 			end
-
 		end
 		@counter = strong( "0" )
-		@counter2 = strong( "0" )
-			para @counter, " what ", @counter2
+		@counter2 = strong( "" )
+		para @counter, " what? ", @counter2, "."
 
 		button "Submit" do
 			alert '@counter is the size, and @counter2 is the actual contents. *\o/*'
-			end
-		
+		end
 	end
 end
