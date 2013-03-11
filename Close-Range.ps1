@@ -15,7 +15,7 @@ switch ( $continue ) {
 	$IncidentId = $IncidentId+=$i
 	Set-SCSMIncident -ID $IncidentId -Status Resolved
 	Write-Host "Resolving $IncidentId"
-	}
-}
+		}
+        }
 	DEFAULT { Exit }
-	}
+}
