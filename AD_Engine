@@ -43,5 +43,4 @@ $allusers | Get-DisabledUsers | Get-OculusUsers | Remove-DistributionGroupMember
 
 # Disabled Users in Active OUs
 $allusers | Get-DisabledUsers | Get-UsersInActiveOUs | Move-ADObject -TargetPath "OU=Disabled Users,DC=Contoso,DC=com"
-$allusers | Get-Ac
 
