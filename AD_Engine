@@ -37,7 +37,7 @@ function Get-UsersInActiveOUs {
 
 $allusers = Get-AllUsers
 
-# Oculus's Dynamically Static Distribution List
+# Contoso's Dynamically Static Distribution List
 $allusers | Get-ActiveLiveUsers | Get-OculusUsers | Add-DistributionGroupMember -Identity "Group Name" -WhatIf
 $allusers | Get-DisabledUsers | Get-OculusUsers | Remove-DistributionGroupMember -Identity "Group Name" -WhatIf
 
