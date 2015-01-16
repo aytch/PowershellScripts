@@ -12,7 +12,7 @@ function Get-AllUsers {
 }
 
 function Get-ActiveLiveUsers {
-    $input | Where { ( $_.Enabled -eq $True ) -and ( $_.extensionattribute9 -ne $null ) }
+    $input | Where { ( $_.Enabled -eq $True ) -and ( $_.employeeid -ne $null ) }
 }
 
 function Get-ActiveUsers {
