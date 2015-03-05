@@ -38,8 +38,8 @@ function Get-UsersInActiveOUs {
 $allusers = Get-AllUsers
 
 # Contoso's Dynamically Static Distribution List
-$allusers | Get-ActiveLiveUsers | Get-OculusUsers | Add-DistributionGroupMember -Identity "Group Name" -WhatIf
-$allusers | Get-DisabledUsers | Get-OculusUsers | Remove-DistributionGroupMember -Identity "Group Name" -WhatIf
+$allusers | Get-ActiveLiveUsers | Get-ContosoUsers | Add-DistributionGroupMember -Identity "Group Name" -WhatIf
+$allusers | Get-DisabledUsers | Get-ContosoUsers | Remove-DistributionGroupMember -Identity "Group Name" -WhatIf
 
 # Disabled Users in Active OUs
 $allusers | Get-DisabledUsers | Get-UsersInActiveOUs | Move-ADObject -TargetPath "OU=Disabled Users,DC=Contoso,DC=com"
