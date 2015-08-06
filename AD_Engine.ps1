@@ -24,7 +24,7 @@ function Get-DisabledUsers {
 }
 
 function Get-ContosoUsers {
-    $input | Where { $_.mail -like "*contoso.com" ) }
+    $input | Where { $_.mail -like "*contoso.com" }
     }
 
 function Get-ServiceAccounts {
