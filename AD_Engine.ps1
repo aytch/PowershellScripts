@@ -1,6 +1,6 @@
-Import-Module ActiveDirectory
+Import-Module -Name ActiveDirectory
 
-function Get-AllUsers {
+function Get-AllUser {
     try {
     Get-ADUser -Filter * -Properties employeeid,employeenumber,mail
     return
@@ -11,36 +11,36 @@ function Get-AllUsers {
     }
 }
 
-function Get-ActiveLiveUsers {
+function Get-ActiveLiveUser {
     $input | Where { ( $_.Enabled -eq $True ) -and ( $_.employeeid -ne $null ) }
 }
 
-function Get-ActiveUsers {
+function Get-ActiveUser {
     $input | Where { ( $_.Enabled) -eq $True ) }
 }
 
-function Get-DisabledUsers {
+function Get-DisabledUser {
     $input | Where { ( $_.Enabled -eq "False" ) }
 }
 
-function Get-ContosoUsers {
+function Get-ContosoUser {
     $input | Where { $_.mail -like "*contoso.com" }
     }
 
-function Get-ServiceAccounts {
+function Get-ServiceAccount {
     $input | Where { ( $_.EmployeeNumber -contains "999999*" ) }
     }
 
-function Get-UsersInActiveOUs {
+function Get-UserInActiveOU {
     $input | Where { ( $_.DistinguishedName -notcontains "*Disabled Users*" ) }
     }
 
-$allusers = Get-AllUsers
+$allusers = Get-AllUser
 
 # Contoso's Dynamically Static Distribution List
-$allusers | Get-ActiveLiveUsers | Get-ContosoUsers | Add-DistributionGroupMember -Identity "Group Name" -WhatIf
-$allusers | Get-DisabledUsers | Get-ContosoUsers | Remove-DistributionGroupMember -Identity "Group Name" -WhatIf
+$allusers | Get-ActiveLiveUser | Get-ContosoUser | Add-DistributionGroupMember -Identity "Group Name" -WhatIf
+$allusers | Get-DisabledUser | Get-ContosoUser | Remove-DistributionGroupMember -Identity "Group Name" -WhatIf
 
 # Disabled Users in Active OUs
-$allusers | Get-DisabledUsers | Get-UsersInActiveOUs | Move-ADObject -TargetPath "OU=Disabled Users,DC=Contoso,DC=com"
+$allusers | Get-DisabledUser | Get-UserInActiveOU | Move-ADObject -TargetPath "OU=Disabled Users,DC=Contoso,DC=com"
 
