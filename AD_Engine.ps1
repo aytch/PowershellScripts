@@ -12,27 +12,27 @@ function Get-AllUser {
 }
 
 function Get-ActiveLiveUser {
-    $input | Where { ( $_.Enabled -eq $True ) -and ( $_.employeeid -ne $null ) }
+    $input | Where-object { ( $_.Enabled -eq $True ) -and ( $_.employeeid -ne $null ) }
 }
 
 function Get-ActiveUser {
-    $input | Where { ( $_.Enabled) -eq $True ) }
+    $input | Where-object { ( $_.Enabled) -eq $True ) }
 }
 
 function Get-DisabledUser {
-    $input | Where { ( $_.Enabled -eq "False" ) }
+    $input | Where-Object { ( $_.Enabled -eq "False" ) }
 }
 
 function Get-ContosoUser {
-    $input | Where { $_.mail -like "*contoso.com" }
+    $input | Where-Object { $_.mail -like "*contoso.com" }
     }
 
 function Get-ServiceAccount {
-    $input | Where { ( $_.EmployeeNumber -contains "999999*" ) }
+    $input | Where-Object { ( $_.EmployeeNumber -contains "999999*" ) }
     }
 
 function Get-UserInActiveOU {
-    $input | Where { ( $_.DistinguishedName -notcontains "*Disabled Users*" ) }
+    $input | Where-Object { ( $_.DistinguishedName -notcontains "*Disabled Users*" ) }
     }
 
 $allusers = Get-AllUser
