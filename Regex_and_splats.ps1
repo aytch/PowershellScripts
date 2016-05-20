@@ -15,7 +15,7 @@ function Assert-ValidWindowsServer {
 }
 
 $SearchArgument = @{
-       'Filter' = '*'
+       'Filter' = '*';
    'SearchBase' = 'OU=ContosoCorp,DC=contoso,dc=com';
    'Properties' = 'OperatingSystem';
   'SearchScope' = 'Subtree'
